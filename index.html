@@ -20,6 +20,13 @@
          /* transition-timing-function: cubic-bezier(0.47, 2, 0.8, 1.2); */
       }
 
+      #doodle {
+         position: absolute;
+         left: 50%;
+         top: 50%;
+         transform: translate(-50%, -50%);
+      }
+
       body {
          display: flex;
          justify-content: center;
@@ -104,7 +111,6 @@
          transform: rotate(-90deg);
          /* background: red; */
       }
-
 
       /* 對齊線 */
       #line .line {
@@ -372,6 +378,39 @@
 </head>
 
 <body>
+   <!-- css-doodle -->
+   <css-doodle id="doodle">
+      :doodle {
+      @grid: 150x1/ 100% 100vh;
+      perspective: 800px;
+      }
+
+      @place-cell: center;
+      @size: 200px 1px;
+
+      transform-style: preserve-3d;
+
+      background:
+      linear-gradient(to left,transparent, rgba(209, 118, 0, 1) 20%,transparent @rand(70%));
+      filter: hue-rotate(-50deg) invert(100%);
+
+      --trans:
+      translate(50%,50%)
+      rotateX(@r(0deg, 360deg))
+      rotateY(@r(0deg, 360deg))
+      rotateZ(@r(0deg, 360deg));
+
+      transform-origin: 0 center;
+      transform: var(--trans) scale(3);
+      opacity: 0;
+
+      animation: move @rand(2s, 3s) infinite -@rand(.1s, 2s);
+      @keyframes move {
+      20% { opacity: 1; }
+      100% { transform: var(--trans) scale(0); }
+      }
+   </css-doodle>
+
    <div id="clock">
       <div id="bg"></div>
       <div id="hour"></div>
@@ -408,6 +447,7 @@
       </div>
    </div>
    <!-- <script src="jquery-3.4.1.js"></script> -->
+   <script src="js/css-doodle.min.js"></script>
    <script>
 
       /* 畫刻度  -----------------------------------------------------------------------------------------------*/
