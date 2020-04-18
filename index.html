@@ -25,16 +25,19 @@
          left: 50%;
          top: 50%;
          transform: translate(-50%, -50%);
+         z-index: 9998;
       }
 
       #mask {
-         width: 100%;
-         height: 100%;
+         /* width: 100%;
+         height: 100%; */
          background: radial-gradient(transparent, transparent 50%, rgba(0, 0, 0, 0.9) 85%) no-repeat center/cover;
          position: absolute;
          top: 0;
          left: 0;
-         z-index: 9999;
+         right: 0;
+         bottom: 0;
+         z-index: 10000;
       }
 
       body {
@@ -377,6 +380,24 @@
 
       #digit div {
          flex: 1;
+      }
+
+      @media (max-width:500px) {
+         #doodle {
+            display: none;
+         }
+
+         #clock {
+            width: 300px;
+            height: 300px;
+         }
+      }
+
+      @media (max-width:320px) {
+         #clock {
+            width: 280px;
+            height: 280px;
+         }
       }
    </style>
 </head>
