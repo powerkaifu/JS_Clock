@@ -463,14 +463,14 @@
          <div class="tick_tick"></div>
       </div>
       <div id="digit">
-         <div id="hour_ten">1</div>
-         <div id="hour_one">1</div>
+         <div id="hour_ten"></div>
+         <div id="hour_one"></div>
          <div>:</div>
-         <div id="minute_ten">1</div>
-         <div id="minute_one">1</div>
+         <div id="minute_ten"></div>
+         <div id="minute_one"></div>
          <div>:</div>
-         <div id="second_ten">1</div>
-         <div id="second_one">1</div>
+         <div id="second_ten"></div>
+         <div id="second_one"></div>
       </div>
    </div>
    <!-- <script src="jquery-3.4.1.js"></script> -->
@@ -537,23 +537,25 @@
          }
 
          // 數位時鐘
-         const $hour_ten = document.getElementById('hour_ten');
+        const $hour_ten = document.getElementById('hour_ten');
          const $hour_one = document.getElementById('hour_one');
          const $minute_ten = document.getElementById('minute_ten');
          const $minute_one = document.getElementById('minute_one');
          const $second_ten = document.getElementById('second_ten');
          const $second_one = document.getElementById('second_one');
-
-         const hour_number = Math.floor(hour % 10);
-
+         console.log(hour);
+         const hour_number = hour;
          const min_ten_number = Math.floor(min / 10);
          const min_one_number = Math.floor(min % 10);
          const sec_ten_number = Math.floor(sec / 10);
          const sec_one_number = Math.floor(sec % 10);
-         if (hour_number < 10) {
+         if ((hour_number-12) < 10) {
             $hour_ten.textContent = 0;
+            $hour_one.textContent = hour_number-12;
+         }else{
+            $hour_ten.textContent = 1;
+            $hour_one.textContent=(hour_number-12)%10;
          }
-         $hour_one.textContent = hour_number;
          $minute_ten.textContent = min_ten_number;
          $minute_one.textContent = min_one_number;
          $second_ten.textContent = sec_ten_number;
