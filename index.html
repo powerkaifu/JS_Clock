@@ -53,12 +53,14 @@
 
          #clock {
             /* 控制整體外觀 */
-            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)) hue-rotate(-50deg) contrast(130%) saturate(110%) invert(100%);
+            filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5)) hue-rotate(-50deg) contrast(130%) saturate(110%)
+               invert(100%);
             width: 350px;
             height: 350px;
             background: radial-gradient(rgb(255, 254, 220) 0%, rgb(252, 249, 210) 75%, rgb(255, 248, 210) 75%);
-            box-shadow: inset 0 0 10px 8px rgba(126, 81, 29, 0.5), inset 0 0 30px 15px rgba(126, 81, 29, 0.5), 0 0 50px 10px rgb(255, 230, 170), 0 0 5px 5px rgb(145, 107, 61), 0 0 5px 3px rgb(112, 67, 12), 0 0 50px 60px rgb(255, 230, 170), 0 0 30px 20px rgba(255, 94, 0, 0.747),
-               0 0 100px 40px rgb(126, 80, 0);
+            box-shadow: inset 0 0 10px 8px rgba(126, 81, 29, 0.5), inset 0 0 30px 15px rgba(126, 81, 29, 0.5),
+               0 0 50px 10px rgb(255, 230, 170), 0 0 5px 5px rgb(145, 107, 61), 0 0 5px 3px rgb(112, 67, 12),
+               0 0 50px 60px rgb(255, 230, 170), 0 0 30px 20px rgba(255, 94, 0, 0.747), 0 0 100px 40px rgb(126, 80, 0);
             border-radius: 50%;
             margin: auto;
             position: relative;
@@ -341,7 +343,8 @@
             }
 
             to {
-               filter: drop-shadow(0 0 2px orange) drop-shadow(0 0 2px orange) drop-shadow(0 0 3px orange) drop-shadow(0 0 5px orange);
+               filter: drop-shadow(0 0 2px orange) drop-shadow(0 0 2px orange) drop-shadow(0 0 3px orange)
+                  drop-shadow(0 0 5px orange);
             }
          }
 
@@ -396,9 +399,12 @@
       <div id="mask"></div>
       <!-- css-doodle -->
       <css-doodle id="doodle">
-         :doodle { @grid: 100x1/ 100% 100vh; perspective: 800px; } @place-cell: center; @size: 200px 1px; transform-style: preserve-3d; background: linear-gradient(to left,transparent, rgba(209, 118, 0, 1) 30%,transparent @rand(50%)); filter: hue-rotate(-40deg) invert(100%); --trans:
-         translate(50%,50%) rotateX(@r(0deg, 360deg)) rotateY(@r(0deg, 360deg)) rotateZ(@r(0deg, 360deg)); transform-origin: 0 center; transform: var(--trans) scale(4); opacity: 0; animation: move @rand(2s, 5s) infinite -@rand(.1s, 2s); @keyframes move { 20% { opacity: 1; } 100% { transform:
-         var(--trans) scale(0); } }
+         :doodle { @grid: 100x1/ 100% 100vh; perspective: 800px; } @place-cell: center; @size: 200px 1px;
+         transform-style: preserve-3d; background: linear-gradient(to left,transparent, rgba(209, 118, 0, 1)
+         30%,transparent @rand(50%)); filter: hue-rotate(-40deg) invert(100%); --trans: translate(50%,50%)
+         rotateX(@r(0deg, 360deg)) rotateY(@r(0deg, 360deg)) rotateZ(@r(0deg, 360deg)); transform-origin: 0 center;
+         transform: var(--trans) scale(4); opacity: 0; animation: move @rand(2s, 5s) infinite -@rand(.1s, 2s);
+         @keyframes move { 20% { opacity: 1; } 100% { transform: var(--trans) scale(0); } }
       </css-doodle>
 
       <div id="clock">
@@ -467,10 +473,26 @@
          let html = '';
          const $tick = document.getElementById('tick');
          for (let i = 0; i < 60; i++) {
-            if (i == 0 || i == 5 || i == 10 || i == 15 || i == 20 || i == 25 || i == 30 || i == 35 || i == 40 || i == 45 || i == 50 || i == 55 || i == 60) {
+            if (
+               i == 0 ||
+               i == 5 ||
+               i == 10 ||
+               i == 15 ||
+               i == 20 ||
+               i == 25 ||
+               i == 30 ||
+               i == 35 ||
+               i == 40 ||
+               i == 45 ||
+               i == 50 ||
+               i == 55 ||
+               i == 60
+            ) {
                // 可在漸層背景設定刻度的寬度
                html += `
-            <div class="tick_tick" style=" transform: translate(-50%, 0) rotate(${i * 6}deg);width:6px;background:linear-gradient(to top, transparent 0%, transparent 92%, rgb(122, 90, 54) 0%)"></div>
+            <div class="tick_tick" style=" transform: translate(-50%, 0) rotate(${
+               i * 6
+            }deg);width:6px;background:linear-gradient(to top, transparent 0%, transparent 92%, rgb(122, 90, 54) 0%)"></div>
             `;
             } else {
                html += `<div class="tick_tick" style=" transform: translate(-50%, 0) rotate(${i * 6}deg);"></div>`;
@@ -526,7 +548,6 @@
             const $minute_one = document.getElementById('minute_one');
             const $second_ten = document.getElementById('second_ten');
             const $second_one = document.getElementById('second_one');
-            console.log(hour);
             const hour_number = hour;
             const min_ten_number = Math.floor(min / 10);
             const min_one_number = Math.floor(min % 10);
@@ -538,6 +559,10 @@
             } else {
                $hour_ten.textContent = 1;
                $hour_one.textContent = (hour_number - 12) % 10;
+            }
+            if (hour_number == 0) {
+               $hour_ten.textContent = 0;
+               $hour_one.textContent = 0;
             }
             $minute_ten.textContent = min_ten_number;
             $minute_one.textContent = min_one_number;
