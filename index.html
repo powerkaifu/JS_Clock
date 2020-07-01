@@ -399,7 +399,7 @@
       <div id="mask"></div>
       <!-- css-doodle -->
       <css-doodle id="doodle">
-         :doodle { @grid: 100x1/ 100% 100vh; perspective: 800px; } @place-cell: center; @size: 200px 1px;
+         :doodle { @grid: 20x1/ 100% 100vh; perspective: 800px; } @place-cell: center; @size: 200px 1px;
          transform-style: preserve-3d; background: linear-gradient(to left,transparent, rgba(209, 118, 0, 1)
          30%,transparent @rand(50%)); filter: hue-rotate(-40deg) invert(100%); --trans: translate(50%,50%)
          rotateX(@r(0deg, 360deg)) rotateY(@r(0deg, 360deg)) rotateZ(@r(0deg, 360deg)); transform-origin: 0 center;
@@ -553,12 +553,13 @@
             const min_one_number = Math.floor(min % 10);
             const sec_ten_number = Math.floor(sec / 10);
             const sec_one_number = Math.floor(sec % 10);
-            if (hour_number - 12 < 10) {
+
+            if (hour_number < 12) {
                $hour_ten.textContent = 0;
-               $hour_one.textContent = hour_number - 12;
+               $hour_one.textContent = hour_number;
             } else {
-               $hour_ten.textContent = 1;
-               $hour_one.textContent = (hour_number - 12) % 10;
+               $hour_ten.textContent = hour_number.toString().split('')[0];
+               $hour_one.textContent = hour_number.toString().split('')[1];
             }
             if (hour_number == 0) {
                $hour_ten.textContent = 0;
