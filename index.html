@@ -28,8 +28,6 @@
          }
 
          #mask {
-            /* width: 100%;
-         height: 100%; */
             background: radial-gradient(transparent, transparent 50%, rgba(0, 0, 0, 0.9) 85%) no-repeat center/cover;
             position: absolute;
             top: 0;
@@ -466,7 +464,6 @@
             <div id="second_one"></div>
          </div>
       </div>
-      <!-- <script src="jquery-3.4.1.js"></script> -->
       <script src="js/css-doodle.min.js"></script>
       <script>
          /* 畫刻度  -----------------------------------------------------------------------------------------------*/
@@ -509,11 +506,6 @@
          const now = new Date();
          let round = 0;
          const setDate = () => {
-            /* -----------------------------------------------------------------------------------------------------
-            時針可以想想看例子：6:30 時針位置在哪？在6與7的中間，也就是說這時時針角度...
-            6時，時針跑了 30*60=180度，
-            30分，時針跑了幾度？15度，可以得知 30*0.5=15
-          ------------------------------------------------------------------------------------------------------*/
             const now = new Date();
             const hour = now.getHours();
             const min = now.getMinutes();
